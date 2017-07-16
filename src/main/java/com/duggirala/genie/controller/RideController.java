@@ -40,7 +40,7 @@ public class RideController {
                     .status(HttpStatus.CREATED)
                     .body(createdRide);
     }
-    @PreAuthorize("#oauth2.hasScope('read')")
+
     @RequestMapping(value = "/ride/{postId}",method = GET, produces = APPLICATION_JSON_VALUE)
     public ResponseEntity<Ride> getRideByPostId(@PathVariable String postId){
         Ride ride = rideService.getRideByPostId(postId);

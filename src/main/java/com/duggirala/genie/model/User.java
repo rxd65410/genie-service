@@ -1,11 +1,15 @@
 package com.duggirala.genie.model;
 
+import org.springframework.data.annotation.Id;
+
 /**
  * Created by raviteja on 7/15/17.
  */
 public class User {
-    String name;
+    @Id
     String userId;
+    String name;
+
 
     public String getName() {
         return name;
