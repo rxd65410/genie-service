@@ -25,7 +25,6 @@ public class UserAuth extends User implements UserDetails  {
 
     @Override
     public String getPassword() {
-
         return password;
     }
 
@@ -53,5 +52,9 @@ public class UserAuth extends User implements UserDetails  {
     @Override
     public boolean isEnabled() {
         return enabled;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

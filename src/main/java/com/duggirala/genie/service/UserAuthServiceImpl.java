@@ -5,6 +5,7 @@ import com.duggirala.genie.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 /**
@@ -27,6 +28,9 @@ public class UserAuthServiceImpl implements UserAuthService {
 
     @Override
     public UserAuth createUser(UserAuth user) {
+        String password = user.getPassword();
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        user.setPassword(passwordEncoder.encode(password));
         return userRepository.save(user);
     }
 

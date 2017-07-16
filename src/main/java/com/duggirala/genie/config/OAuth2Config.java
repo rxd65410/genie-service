@@ -30,10 +30,10 @@ public class OAuth2Config extends AuthorizationServerConfigurerAdapter {
     @Value("${genie.oauth2.tokenTimeout:3600}")
     private int expiration;
 
-    /*@Bean
+    @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
-    }*/
+    }
 
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer configurer) throws Exception {
