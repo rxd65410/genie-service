@@ -3,8 +3,10 @@ package com.duggirala.genie.controller;
 import com.duggirala.genie.model.Ride;
 import com.duggirala.genie.service.RideService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,7 +40,7 @@ public class RideController {
                     .status(HttpStatus.CREATED)
                     .body(createdRide);
     }
-
+    @PreAuthorize("#oauth2.hasScope('read')")
     @RequestMapping(value = "/ride/{postId}",method = GET, produces = APPLICATION_JSON_VALUE)
     public ResponseEntity<Ride> getRideByPostId(@PathVariable String postId){
         Ride ride = rideService.getRideByPostId(postId);
