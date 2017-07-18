@@ -11,5 +11,6 @@ import org.springframework.stereotype.Service;
 public interface UserAuthService extends UserDetailsService {
     //Create new user.
     UserAuth createUser(UserAuth user);
+    //Find User by UserID.
     UserAuth findOne(String userId);
 }
