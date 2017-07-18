@@ -29,7 +29,7 @@ public class UserController {
         this.userAuthService = userAuthService;
     }
 
-    @RequestMapping(value = "/user/", method = POST,
+    @RequestMapping(value = "/user/create/", method = POST,
             consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
     public ResponseEntity<UserAuth> createRide(@Valid @RequestBody UserAuth user) {
         UserAuth createdUser = userAuthService.createUser(user);
