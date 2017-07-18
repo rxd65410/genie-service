@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public interface UserAuthService extends UserDetailsService {
+    //Create new user.
     UserAuth createUser(UserAuth user);
     UserAuth findOne(String userId);
 }
