@@ -46,4 +46,11 @@ public class UserController {
         }
         return ResponseEntity.ok(user);
     }
+    
+    @RequestMapping(value = "user/{userId}", method = PUT, consumes = APPLICATION_JSON_VALUE,
+                    produces = APPLICATION_JSON_VALUE)
+    public ResponseEntity<UserAuth> updateUser(@PathVariable String userId) {
+            return userAuthService.updateUser(userId);
+
+    }
 }
