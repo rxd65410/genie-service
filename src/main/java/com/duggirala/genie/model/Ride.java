@@ -2,6 +2,9 @@ package com.duggirala.genie.model;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created by raviteja on 7/15/17.
  */
@@ -10,6 +13,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Ride extends Post{
     private Place fromPlace;
     private Place toPlace;
+    private Map<String, Object> location = new HashMap<>();
     private long journeyDate;
 
     public Place getFromPlace() {
@@ -34,5 +38,13 @@ public class Ride extends Post{
 
     public void setJourneyDate(long journeyDate) {
         this.journeyDate = journeyDate;
+    }
+
+    public Map<String, Object> getLocation() {
+        return location;
+    }
+
+    public void setLocation(Map<String, Object> location) {
+        this.location = location;
     }
 }

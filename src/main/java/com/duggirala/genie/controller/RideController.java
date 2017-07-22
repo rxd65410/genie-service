@@ -2,6 +2,7 @@ package com.duggirala.genie.controller;
 
 import com.duggirala.genie.model.Ride;
 import com.duggirala.genie.service.RideService;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
 import org.springframework.http.HttpStatus;
@@ -33,6 +34,7 @@ public class RideController {
 
     @RequestMapping(value = "/ride/", method = POST,
             consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
+    @ApiOperation(value = "Post new Ride", notes = "create a new Ride post.")
     public ResponseEntity<Ride> createRide(@Valid @RequestBody Ride ride) {
         if(rideService.isRideExists(ride.getPostId())) return new ResponseEntity<>(HttpStatus.CONFLICT);
         Ride createdRide = rideService.createRidePost(ride);
@@ -42,6 +44,7 @@ public class RideController {
     }
 
     @RequestMapping(value = "/ride/{postId}",method = GET, produces = APPLICATION_JSON_VALUE)
+    @ApiOperation(value = "get  Ride", notes = "Get Ride post byt postId")
     public ResponseEntity<Ride> getRideByPostId(@PathVariable String postId){
         Ride ride = rideService.getRideByPostId(postId);
         if(ride==null){

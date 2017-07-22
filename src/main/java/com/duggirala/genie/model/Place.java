@@ -1,6 +1,9 @@
 package com.duggirala.genie.model;
 
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created by raviteja on 7/15/17.
  */
