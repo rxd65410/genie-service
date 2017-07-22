@@ -23,6 +23,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
  * Created by raviteja on 7/15/17.
  */
 @RestController
+@RequestMapping("/ride")
 public class RideController {
     private final RideService rideService;
 
@@ -32,7 +33,7 @@ public class RideController {
     }
 
 
-    @RequestMapping(value = "/ride/", method = POST,
+    @RequestMapping(value = "/", method = POST,
             consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
     @ApiOperation(value = "Post new Ride", notes = "create a new Ride post.")
     public ResponseEntity<Ride> createRide(@Valid @RequestBody Ride ride) {
@@ -43,7 +44,7 @@ public class RideController {
                     .body(createdRide);
     }
 
-    @RequestMapping(value = "/ride/{postId}",method = GET, produces = APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/{postId}",method = GET, produces = APPLICATION_JSON_VALUE)
     @ApiOperation(value = "get  Ride", notes = "Get Ride post byt postId")
     public ResponseEntity<Ride> getRideByPostId(@PathVariable String postId){
         Ride ride = rideService.getRideByPostId(postId);

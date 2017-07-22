@@ -29,7 +29,7 @@ public class UserController {
         this.userAuthService = userAuthService;
     }
 
-    @RequestMapping(value = "/user/", method = POST,
+    @RequestMapping(value = "/user/create/", method = POST,
             consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
     public ResponseEntity<UserAuth> createRide(@Valid @RequestBody UserAuth user) {
         UserAuth createdUser = userAuthService.createUser(user);
@@ -45,5 +45,12 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.NO_CONTENT).body(user);
         }
         return ResponseEntity.ok(user);
+    }
+    
+    @RequestMapping(value = "user/{userId}", method = PUT, consumes = APPLICATION_JSON_VALUE,
+                    produces = APPLICATION_JSON_VALUE)
+    public ResponseEntity<UserAuth> updateUser(@PathVariable String userId) {
+            return userAuthService.updateUser(userId);
+
     }
 }
