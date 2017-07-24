@@ -16,6 +16,7 @@ import javax.validation.Valid;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
+import static org.springframework.web.bind.annotation.RequestMethod.PUT;
 
 /**
  * Created by raviteja on 7/16/17.
@@ -45,12 +46,5 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.NO_CONTENT).body(user);
         }
         return ResponseEntity.ok(user);
-    }
-    
-    @RequestMapping(value = "user/{userId}", method = PUT, consumes = APPLICATION_JSON_VALUE,
-                    produces = APPLICATION_JSON_VALUE)
-    public ResponseEntity<UserAuth> updateUser(@PathVariable String userId) {
-            return userAuthService.updateUser(userId);
-
     }
 }
